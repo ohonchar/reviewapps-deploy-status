@@ -136,8 +136,7 @@ def _get_build_data(url: str, interval: int) -> dict:
 
 
 def _check_review_app_deployment_status(
-    review_app_url: str, accepted_responses: t.List[int], timeout: int, interval: int
-):
+    review_app_url: str, accepted_responses: t.List[int], timeout: int, interval: int):
     """Check Review App deployment status code against accepted_responses.
     
     Inputs:
@@ -146,6 +145,7 @@ def _check_review_app_deployment_status(
         timeout: Maximum time to spend retrying the HTTP response check until it succeeds.
         interval: Interval for each HTTP response check.
     """
+    print(review_app_url)
     if interval > timeout:
         raise ValueError("Interval can't be greater than publish_timeout.")
 
