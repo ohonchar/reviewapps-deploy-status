@@ -217,6 +217,7 @@ def main() -> None:
         time.sleep(args.load_time_delay)
 
         # Check the HTTP response from app URL
+        logger.info(f"https://{reviewapp_build_data['environment']}.herokuapp.com")
         review_app_url = f"https://stagingtestcigit.herokuapp.com/"
         _check_review_app_deployment_status(
             review_app_url=review_app_url,
