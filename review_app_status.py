@@ -197,7 +197,10 @@ def main() -> None:
         timeout=args.deployments_timeout,
         interval=args.interval,
     )
-    logger.info(github_deployment_status_url)
+    logger.info(pull_request_data["repository"]["deployments_url"])
+    logger.info(pull_request_data["pull_request"]["head"]["sha"])
+    logger.info(args.deployments_timeout)
+    logger.info(args.interval)
 
     # Fetch other build data
     reviewapp_build_data = _get_build_data(
