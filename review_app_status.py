@@ -194,7 +194,7 @@ def main() -> None:
     logger.info(pull_request_data)
     github_deployment_status_url = _get_github_deployment_status_url(
         deployments_url=pull_request_data["repository"]["deployments_url"],
-        commit_sha=pull_request_data["push"]["head"]["sha"],
+        commit_sha=pull_request_data["after"],
         timeout=args.deployments_timeout,
         interval=args.interval,
     )
