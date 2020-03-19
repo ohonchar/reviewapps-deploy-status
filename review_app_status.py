@@ -188,13 +188,12 @@ def main() -> None:
     logger.info(f"Statuses being accepted: {args.accepted_responses}")
 
     with open(os.environ["GITHUB_EVENT_PATH"]) as f:
-        pull_request_data = json.load(f)
+        push_data = json.load(f)
 
     # Fetch the GitHub status URL
-    logger.info(pull_request_data)
     github_deployment_status_url = _get_github_deployment_status_url(
-        deployments_url=pull_request_data["repository"]["deployments_url"],
-        commit_sha=pull_request_data["after"],
+        deployments_url=push_data["repository"]["deployments_url"],
+        commit_sha=push_data["after"],
         timeout=args.deployments_timeout,
         interval=args.interval,
     )
