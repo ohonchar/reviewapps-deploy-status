@@ -194,7 +194,7 @@ def main() -> None:
     logger.info(pull_request_data)
     github_deployment_status_url = _get_github_deployment_status_url(
         deployments_url=pull_request_data["repository"]["deployments_url"],
-        commit_sha=pull_request_data["after"],
+        commit_sha=pull_request_data["pull_request"]["head"]["sha"],
         timeout=args.deployments_timeout,
         interval=args.interval,
     )
@@ -218,7 +218,7 @@ def main() -> None:
         time.sleep(args.load_time_delay)
 
         # Check the HTTP response from app URL
-        review_app_url = f"https://stagingtestcigit.herokuapp.com/"
+        review_app_url = f"https://{reviewapp_build_data['environment']}.herokuapp.com"
         _check_review_app_deployment_status(
             review_app_url=review_app_url,
             accepted_responses=args.accepted_responses,
